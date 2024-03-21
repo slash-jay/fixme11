@@ -5,10 +5,13 @@
 }
 
 body {
+  background: linear-gradient(to right, #B2B5E0, #C5ADC5);
     height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+  justify-content: center; background-image:url("/favicon\ final.png");
+  background-repeat: no-repeat;
+  background-position: 50vh;
 }
 
 
@@ -18,12 +21,14 @@ h2 {
   }
 
 .form-container {
+  background: linear-gradient(to right, #B2B5E0, #C5ADC5);
+
     width: 300px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color:whitesmoke;
+  
   }
 
   .form-group {

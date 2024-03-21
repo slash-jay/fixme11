@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #B2B5E0, #C5ADC5)
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .section {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+        }
+        #form-container {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            width: 400px;
+            margin: 20px auto;
+        }
+        #form-container input[type="text"],
+        #form-container textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        #form-container input[type="file"] {
+            margin-top: 10px;
+        }
+        #form-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="section">
+            <a href="#" onclick="showForm()">HAVE A PROPOSAL</a>
+        </div>
+        <div class="section">
+            <a href="/views/job.ejs">FIND A JOB</a>
+        </div>
+        <div class="section">
+            <a href="/views/investor.ejs">INVESTOR</a>
+        </div>
+        <div class="section">
+            <a href="#">JOB PROPOSALS</a>
+        </div>
+    </div>
+
+    <div id="form-container">
+        <form id="proposalForm">
+            <input type="text" id="name" placeholder="Name" required><br>
+            <input type="text" id="place" placeholder="Place" required><br>
+            <textarea id="description" placeholder="Description" required></textarea><br>
+            <input type="file" id="budgetFile" accept=".pdf,.doc,.docx" required><br>
+            <input type="submit" value="Submit Proposal">
+        </form>
+    </div>
+
+    <script>
+        function showForm() {
+            var formContainer = document.getElementById('form-container');
+            formContainer.style.display = 'block';
+        }
+
+        document.getElementById('proposalForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            var formData = new FormData(); // Create FormData object
+            formData.append('name', document.getElementById('name').value);
+            formData.append('place', document.getElementById('place').value);
+            formData.append('description', document.getElementById('description').value);
+
+            fetch('/submit-proposal', { // Send form data to server
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                window.location.href = '/views/investor.ejs'; // Redirect to investor page
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>

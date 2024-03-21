@@ -2,11 +2,218 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <link rel="icon" href="/F.png" type="image/x-icon">
+    <title>HOME</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-80%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(to right, #B2B5E0, #C5ADC5);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            overflow: auto;
+        }
+
+        nav {
+            background-color: whitesmoke;
+            padding: 10px 0;
+            animation: slideIn 0.5s ease;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            display: inline;
+        }
+
+        li a {
+            display: inline-block;
+            color: rgb(9, 9, 9);
+            padding: 10px 45px;
+            text-decoration: none;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        li a:hover {
+            background-color: #bbbab5;
+            color: rgb(15, 32, 125);
+            border-radius: 5px;
+        }
+
+        .container {
+   /* Adjust the path based on the actual location of your image */
+    background-size: cover; /* Ensure the background image covers the entire container */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    margin-left: 42px;
+    margin-right: 42px; /* Adjust this margin as needed */
+    width: 100%; /* Ensure the container spans the entire width */
+    height: 400px; /* Set a fixed height for the container */
+}
+
+        .container2 {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            margin-left: 42px;
+            margin-right: 42px; /* Adjust this margin as needed */
+        }
+        .container3 {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            margin-left: 42px;
+            margin-right: 42px; /* Adjust this margin as needed */
+        }
+        .innerbody2{
+            background: linear-gradient(to right, #B2B5E0, #C5ADC5);
+            width: 1200px;
+            box-shadow: 10px 10px 10px 10px lightblue;
+            height: 360px;
+            color: rgb(15, 32, 125);
+        }
+
+        .innerbody {
+            background: linear-gradient(to right, #B2B5E0, #C5ADC5);
+            width: 1200px;
+            box-shadow: 10px 10px 10px 10px lightblue;
+            height: 360px;
+            color: rgb(15, 32, 125);
+        }
+        .innerbody3 {
+            background: linear-gradient(to right, #B2B5E0, #C5ADC5);
+            width: 1200px;
+            box-shadow: 10px 10px 10px 10px lightblue;
+            height: 360px;
+            color: rgb(15, 32, 125);
+        }
+
+        #tex {
+            padding: 95px;
+            text-align: center;
+        }
+
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        .content2{
+            padding: 20px;
+            text-align: center;
+        }
+        .content3{
+            padding: 20px;
+            text-align: center;
+        }
+
+        .tex1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Real Work</h1>
+    <nav>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+   
+   
+    <div class="container">
+        <div class="innerbody">
+            <div id="tex">
+                <h1><b>NEED A JOB?</b></h1>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content">
+                <h2>Find a Job for FixMe</h2>
+            <p>Forget sifting through endless job postings. FixMe delivers personalized job recommendations tailored to your preferences and experience, ensuring that you never miss out on an opportunity that's right for you.
+                <b>Take the Next Step with FixMe</b>
+                Join FixMe today and take the next step in your career journey. Whether you're looking for a new challenge, career growth, or a fresh start, FixMe is your trusted partner in finding the perfect job opportunity.</p>
+        </div>
+             </div>
+             </div>
+    </div>
+    <div class="container2">
+        <div class="innerbody2">
+            <div id="tex">
+                <h1><b>FINDING A INVESTOR?</b></h1>
+            </div>
+        </div>
+        <div class="content2">
+            <div class="content2">
+                <h2>Seeking Investors for FixMe</h2>
+                <p>Ready to take FixMe to new heights? We're seeking strategic investors to fuel our growth.</p>
+                <p>Why invest in FixMe?</p>
+                <ul>
+                    <li><strong>Proven Success:</strong> FixMe connects job seekers with tailored opportunities.</li>
+                    <li><strong>Growth Potential:</strong> With your investment, we can expand our reach and impact.</li>
+                    <li><strong>Market Opportunity:</strong> Tap into the booming job search market with FixMe.</li>
+                    <li><strong>Experienced Team:</strong> Our team is poised to innovate and lead.</li>
+                </ul>
+                <p>If you're interested in investing in FixMe, let's chat. Together, we can shape the future of work.</p>
+            </div>
+            gether, we can redefine the future of work and help millions of job seekers find their dream opportunities.</p>
+            </div>
+             </div>
+    </div>
+    <div class="container3">
+        <div class="innerbody3">
+            <div id="tex">
+                <h1><b>FINDING A BUSINESS PARTNER?</b></h1>
+            </div>
+        </div>
+        <div class="content3">
+            <div class="content3">
+                <h2>Looking for a Business Partner for FixMe</h2>
+                <p>Ready to join forces with FixMe? We're seeking a strategic business partner to propel our growth.</p>
+                <p>Why partner with FixMe?</p>
+                <ul>
+                    <li><strong>Proven Success:</strong> FixMe has a track record of connecting job seekers with meaningful opportunities.</li>
+                    <li><strong>Growth Potential:</strong> Partnering with us means accessing a platform with limitless growth possibilities.</li>
+                    <li><strong>Market Opportunity:</strong> The job search market is ripe for disruption, and FixMe is at the forefront of innovation.</li>
+                    <li><strong>Expert Team:</strong> Our experienced team is ready to collaborate and drive success.</li>
+                </ul>
+                <p>If you're interested in becoming a business partner with FixMe, let's discuss how we can create mutual success together.</p>
+            </div>
+             </div>
+    </div>
 </body>
 </html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investor Page</title>
+</head>
+<style>
+    body{
+        background: linear-gradient(to right, #B2B5E0, #C5ADC5)
+    }
+</style>
+<body   >
+    <h1>Investor Page</h1>
+    <div>
+        <h2>Submitted Proposal Details:</h2>
+        <% if (proposal) { %>
+            <p><strong>Name:</strong> <%= proposal.name %></p>
+            <p><strong>Place:</strong> <%= proposal.place %></p>
+            <p><strong>Description:</strong> <%= proposal.description %></p>
+        <% } else { %>
+            <p>No proposal submitted yet.</p>
+        <% } %>
+    </div>
+</body>
+</html>
