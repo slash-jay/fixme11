@@ -60,6 +60,9 @@ app.post("/login", async (req, res) => {
         res.send("wrong Details");
     }
 });
+app.get('/about', function(req, res) {
+    res.render('about'); 
+});
 
 
 const port = 5000;
