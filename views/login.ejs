@@ -4,33 +4,133 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon final.png" type="image/png">
-
     <title>Login</title>
     <style>
-    body{
-      background: linear-gradient(to right, #B2B5E0, #C5ADC5);
-    }
+        body {
+            background: linear-gradient(to right, #B2B5E0, #C5ADC5);
+            margin: 0;
+            padding: 0;
+        }
+       
+        .form-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 450px;
+    margin: 0 auto;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 60%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .submit-btn {
+            background-color: #00008B;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .submit-btn:hover {
+            background-color: #0000CD;
+        }
+
+        .link {
+            color: #0000CD;
+            text-decoration: none;
+        }
+
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, #B2B5E0, #C5ADC5);
+            z-index: -1; /* Ensure particles are behind other content */
+        }
     </style>
 
-    <link rel="stylesheet" href="/style.css">
+    <!-- Include Particle.js library -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
 <body>
+    <!-- Particle.js container -->
+    <div id="particles-js"></div>
 
     <div class="form-container">
         <h2>Login</h2>
         <form action="/login" method="post">
-          <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="username" placeholder="Enter your name" required autocomplete="off">
-          </div>
-          <div class="form-group">
-            <label for="password">password:</label>
-            <input type="password" id="password" name="password" placeholder="password" required>
-          </div>
-          <button type="submit" class="submit-btn">Login</button>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="username" placeholder="Enter your name" required autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="submit-btn">Login</button>
         </form>
         <p>Don't have an account? <a class="link" href="/signup">SignUp</a></p>
-      </div>
-    
+    </div>
+
+    <script>
+        // Configure Particle.js
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 100
+                },
+                "color": {
+                    "value": "#00008B"
+                },
+                "shape": {
+                    "type": "circle"
+                },
+                "size": {
+                    "value": 4
+                },
+                "opacity": {
+                    "value": 0.6
+                },
+                "move": {
+                    "speed": 4
+                },
+                "line_linked": {
+                    "color": "#00008B",
+                    "opacity": 0.4
+                }
+            },
+            "interactivity": {
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
