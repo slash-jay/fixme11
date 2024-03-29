@@ -32,32 +32,11 @@ app.get("/services", (req, res) => {
 app.get("/contact", (req, res) => {
     res.render('contact'); 
 });
-app.post("/submit-proposal", async (req, res) => {
-    const data = {
-        name: req.body.name,
-        place: req.body.place,
-        description: req.body.description
-        // Add other form fields here if needed
-    };
-
-    // Redirect to the investor page with query parameters containing the proposal details
-    res.redirect(`/views/investor?name=${encodeURIComponent(data.name)}&place=${encodeURIComponent(data.place)}&description=${encodeURIComponent(data.description)}`);
+app.get("/job",(req,res)=>{
+    
+    res.render('job');
 });
-app.get("/views/job.ejs", (req, res) => {
-    res.render("job");
-});
-app.get("/views/investor.ejs", (req, res) => {
 
-    // Retrieve proposal details from query parameters
-    const proposal = {
-        name: req.query.name,
-        place: req.query.place,
-        description: req.query.description
-    };
-
-    // Render the investor page with the proposal details
-    res.render("investor", { proposal });
-});
 
 app.post("/signup", async (req, res) => {
     const data = {
@@ -103,22 +82,7 @@ app.post("/login", async (req, res) => {
         res.send("Error occurred while processing login");
     }
 });
-app.post("/submit-proposal", async (req, res) => {
-    const data = {
-        name: req.body.name,
-        place: req.body.place,
-        description: req.body.description
-        // Add other form fields here if needed
-    };
-
-    // Here you can process the data, store it in the database, or handle it as needed
-    // For example:
-    // const savedData = await collection.insertOne(data);
-    // console.log(savedData);
-
-    // For simplicity, I'm just sending a success message back to the client
-    res.send('Proposal submitted successfully');
-});
+ 
 const port = 3000;
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`)

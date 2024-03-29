@@ -9,7 +9,18 @@ mongoose.connect("mongodb://127.0.0.1:27017/login-tut")
 
 
 
-// Create Schema
+// // Create Schema
+// const job=new mongoose.Schema({
+//     name:{
+//         type:String,
+//         required:true
+//     },
+//     password:{
+//         type:String,
+//         required:true
+//     }
+
+// });
 const Loginschema = new mongoose.Schema({
     name: {
         type:String,
