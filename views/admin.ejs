@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Data</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #B2B5E0, #C5ADC5);
+            margin: 0;
+            padding: 0;
+        }
+        .userContainer {
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            background: linear-gradient(to right, #c0bebe, #ecfff6);
+            border-radius: 10px;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .userContainer:hover {
+            transform: scale(1.1);
+        }
+
+        .userData {
+            display: none;
+            padding: auto;
+            position: static;
+           
+            right: 23%;
+            transform: translate(-50%, -50%);
+            width: auto; /* Adjust width to fit content */
+            max-width: 90%; /* Set maximum width */
+            height: auto; /* Adjust height to fit content */
+            max-height: 90%; /* Set maximum height */
+            padding: 10px;
+            box-sizing: border-box;
+            background: linear-gradient(to right, #B2B5E0, #C5ADC5);
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            z-index: 1;
+            color: black; /* Set text color to black */
+            overflow: auto; /* Add scrollbar if content overflows */
+        }
+
+        .userContainer:hover .userData {
+            display: block;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <h1>User Data</h1>
+    <div id="userData"></div>
+
+    <script>
+        fetch('/users')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(users => {
+                const userDataDiv = document.getElementById('userData');
+                users.forEach(user => {
+                    const userContainer = document.createElement('div');
+                    userContainer.classList.add('userContainer');
+
+                    const userName = document.createElement('p');
+                    userName.textContent = user.name;
+
+                    const userData = document.createElement('div');
+                    userData.classList.add('userData');
+                    userData.innerHTML = `<p>Username: ${user.name}</p><p>Password: ${user.password}</p>`;
+
+                    userContainer.appendChild(userName);
+                    userContainer.appendChild(userData);
+
+                    userDataDiv.appendChild(userContainer);
+                });
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+    </script>
+</body>
+</html>
