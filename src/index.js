@@ -1,8 +1,24 @@
 const express = require("express");
 const path = require("path");
-const User = require("./config"); // Importing the User model
+//const User = require("./config"); // Importing the User model
 const bcrypt = require('bcrypt');
-
+//const FormEntry = require('./formEntry');
+const { User,JobApplication } = require('./config');
+// JobApplication.create({
+//     name: 'John Doe',               // Name of the applicant
+//     place: 'City',                  // Place of residence
+//     mobile: '1234567890',           // Mobile number of the applicant
+//     jobDescription: 'Developer',    // Job description or position applied for
+//     expectedSalary: '50000',        // Expected salary
+//     proofDescription: 'Resume',     // Description of the proof provided (e.g., resume)
+//     // Additional fields...
+// })
+// .then(jobApplication => {
+//     console.log('Job application created:', jobApplication);
+// })
+// .catch(error => {
+//     console.error('Error creating job application:', error);
+// });
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -37,7 +53,34 @@ app.get("/job",(req,res)=>{
     res.render('job');
 });
 
+app.get("/proposals",(req,res)=>{
+    res.render('proposals');
+});
 
+app.post("/submit-form", async (req, res) => {
+    try {
+        // Extract form data from the request body
+        const { name, place, mobile, jobDescription, expectedSalary, proofDescription } = req.body;
+
+        // Create a new job application document
+        const newJobApplication = new JobApplication({
+            name,
+            place,
+            mobile,
+            jobDescription,
+            expectedSalary,
+            proofDescription
+        });
+
+        // Save the new job application to the database
+        await newJobApplication.save();
+
+        res.status(201).send("Form submitted successfully!");
+    } catch (error) {
+        console.error('Error submitting form:', error);
+        res.status(500).send("Internal Server Error");
+    }
+});
 // Endpoint to fetch user data
 app.get('/users', async (req, res) => {
     try {
@@ -50,7 +93,19 @@ app.get('/users', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+app.get("/user/:userId/proposals", async (req, res) => {
+    try {
+        const userId = req.params.userId;
 
+        // Count the number of proposals made by the user
+        const proposalCount = await JobApplication.countDocuments({ userId });
+
+        res.json(proposalCount);
+    } catch (error) {
+        console.error('Error fetching proposal count:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 app.post("/signup", async (req, res) => {
     const { username, password } = req.body;
 
@@ -103,6 +158,28 @@ app.post("/login", async (req, res) => {
         res.status(500).send("Error occurred while processing login");
     }
 });
+
+
+
+// app.post("/submit-form", async (req, res) => {
+//     try {
+//         // Parse form data from the request body
+//         const formData = req.body;
+
+//         // Create a new instance of the FormEntry model with the parsed form data
+//         const newFormEntry = new FormEntry(formData);
+
+//         // Save the new form entry to the database
+//         await newFormEntry.save();
+
+//         // Respond with a success message
+//         res.status(201).send('Form data saved successfully!');
+//     } catch (error) {
+//         console.error('Error saving form data:', error);
+//         res.status(500).send("An error occurred while saving form data. Please try again later.");
+//     }
+// });
+
 
 const port = 3000;
 app.listen(port, () => {

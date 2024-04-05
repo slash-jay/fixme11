@@ -8,8 +8,8 @@ mongoose.connect("mongodb://127.0.0.1:27017/login-tut")
         console.error("Error connecting to database:", error);
     });
 
-// Define the schema
-const Loginschema = new mongoose.Schema({
+// Define the schema for user login
+const LoginSchema = new mongoose.Schema({
     name: {
         type:String,
         required: true
@@ -19,6 +19,41 @@ const Loginschema = new mongoose.Schema({
         required: true
     }
 });
+const JobApplicationSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    place: {
+        type: String,
+        required: true
+    },
+    mobile: {
+        type: String,
+        required: true
+    },
+    jobDescription: {
+        type: String,
+        required: true
+    },
+    expectedSalary: {
+        type: String,
+        required: true
+    },
+    proofDescription: {
+        type: String,
+        required: true
+    },
+    submittedAt: {
+        type: Date,
+        default: Date.now
+    }
+});
 
-// Define and export the mongoose model
-module.exports = mongoose.model("User", Loginschema);
+// const userSchema = new mongoose.Schema         unique: true // Ensure uniquenes
+module.exports = {
+    User: mongoose.model("User", LoginSchema),
+    JobApplication: mongoose.model("JobApplication", JobApplicationSchema)
+
+    
+};

@@ -60,7 +60,7 @@
     <div id="userData"></div>
 
     <script>
-        fetch('/users')
+         fetch('/users')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -84,11 +84,29 @@
                     userContainer.appendChild(userData);
 
                     userDataDiv.appendChild(userContainer);
+
+                    // Fetch proposal count for each user
+                    fetch(`/user/${user._id}/proposals`)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then(proposalCount => {
+                            const countElement = document.createElement('p');
+                            countElement.textContent = `Proposals: ${proposalCount}`;
+                            userData.appendChild(countElement);
+                        })
+                        .catch(error => {
+                            console.error('Error fetching proposal count:', error);
+                        });
                 });
             })
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
             });
+
     </script>
 </body>
 </html>
