@@ -1,80 +1,62 @@
+<!-- job.ejs -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Listings</title>
-<style>
-    body {
-        background: linear-gradient(to right, #B2B5E0, #C5ADC5);
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-}
-
-h1 {
-    text-align: center;
-}
-
-.job {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 20px;
-}
-
-.job h2 {
-    margin-top: 0;
-}
-
-.job p {
-    margin: 5px 0;
-}
-
-</style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #B2B5E0, #C5ADC5);
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .job-listing {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+        }
+        .job-heading {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .job-details {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
+
+<div class="container">
     <h1>Job Listings</h1>
+    <% if (jobApplications.length > 0) { %>
+        <% jobApplications.reverse().forEach((job) => { %>
+            <div class="job-listing">
+                <div class="job-heading"><%= job.name %></div>
+                <div class="job-details">
+                    <strong>Place:</strong> <%= job.place %><br>
+                    <strong>Mobile:</strong> <%= job.mobile %><br>
+                    <strong>Job Description:</strong> <%= job.jobDescription %><br>
+                    <strong>Expected Salary:</strong> <%= job.expectedSalary %><br>
+                    <strong>Proof Description:</strong> <%= job.proofDescription %><br>
+                    <strong>Submitted At:</strong> <%= job.submittedAt %><br>
+                </div>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p>No job applications found.</p>
+    <% } %>
+</div>
 
-    <div id="jobListings"></div>
-
-    <script>
-        const jobListings = [
-    { workType: 'Full-time', income: '50,000 - 70,000', duration: 'Permanent', place: 'HYDERABAB, TELANGANA' },
-    { workType: 'Part-time', income: '$20 - $25 per hour', duration: 'Temporary', place: 'MUMBAI,MAHARASHTRA' },
-    { workType: 'Remote', income: '$60,000 - $80,000', duration: 'Contract', place: 'BANGALORE, KARNATAKA' }
-];
-
-const jobListingsContainer = document.getElementById('jobListings');
-
-jobListings.forEach(job => {
-    const jobDiv = document.createElement('div');
-    jobDiv.classList.add('job');
-
-    const jobTitle = document.createElement('h2');
-    jobTitle.textContent = `${job.workType} Job`;
-
-    const workType = document.createElement('p');
-    workType.textContent = `Work Type: ${job.workType}`;
-
-    const income = document.createElement('p');
-    income.textContent = `Income: ${job.income}`;
-
-    const duration = document.createElement('p');
-    duration.textContent = `Duration: ${job.duration}`;
-
-    const place = document.createElement('p');
-    place.textContent = `Place: ${job.place}`;
-
-    jobDiv.appendChild(jobTitle);
-    jobDiv.appendChild(workType);
-    jobDiv.appendChild(income);
-    jobDiv.appendChild(duration);
-    jobDiv.appendChild(place);
-
-    jobListingsContainer.appendChild(jobDiv);
-});
-
-    </script>
 </body>
 </html>

@@ -28,6 +28,11 @@ app.use(express.static("public"));
 app.get("/", (req, res) => {
     res.render("login");
 });
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Internal Server Error');
+});
 
 app.get("/home", (req, res) => {
     res.render("home");
@@ -41,6 +46,7 @@ app.get("/about", (req, res) => {
     res.render('about'); 
 });
 
+
 app.get("/services", (req, res) => {
     res.render('services'); 
 });
@@ -49,13 +55,26 @@ app.get("/contact", (req, res) => {
     res.render('contact'); 
 });
 
-app.get("/job",(req,res)=>{
-    res.render('job');
-});
+// app.get("/job",(req,res)=>{
+//     res.render('job');
+// });
 
 app.get("/proposals",(req,res)=>{
     res.render('proposals');
 });
+app.get('/job', async (req, res) => {
+    try {
+        // Fetch all job applications from the database
+        const jobApplications = await JobApplication.find({});
+        
+        // Render the job.ejs template with job applications data
+        res.render('job', { jobApplications: jobApplications });
+    } catch (error) {
+        console.error('Error fetching job applications:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 
 app.post("/submit-form", async (req, res) => {
     try {
@@ -128,6 +147,43 @@ app.post("/signup", async (req, res) => {
     } catch (error) {
         console.error('Error signing up user:', error);
         res.status(500).send("Error occurred while processing signup");
+    }
+});
+// Route to render the user's dashboard
+// Endpoint to fetch job applications for a specific user
+app.get("/user/:name/proposals", async (req, res) => {
+    try {
+        const username = req.params.name;
+
+        // Fetch the job applications for the provided name
+        const userJobApplications = await JobApplication.find({ name: username });
+
+        res.json(userJobApplications);
+    } catch (error) {
+        console.error('Error fetching job applications:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+// Route to render the user's dashboard
+// Render the form to input username when accessing the dashboard
+app.get('/dashboard', (req, res) => {
+    res.render('dashboard_username_form');
+});
+
+// Handle form submission to fetch job applications based on the provided username
+app.post('/dashboard', async (req, res) => {
+    try {
+        const username = req.body.username;
+
+        // Fetch the job applications for the provided username
+        const userJobApplications = await JobApplication.find({ name: username });
+
+        // Render the dashboard template with the job application data
+        res.render('dashboard', { jobApplications: userJobApplications });
+    } catch (error) {
+        console.error('Error fetching job applications:', error);
+        res.status(500).send('Internal Server Error');
     }
 });
 
