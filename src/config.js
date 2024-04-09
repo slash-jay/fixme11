@@ -49,11 +49,48 @@ const JobApplicationSchema = new mongoose.Schema({
         default: Date.now
     }
 });
-
+const IdeaSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    phoneNo: {
+        type: String,
+        required: true
+    },
+    ideaDescription: {
+        type: String,
+        required: true
+    },
+    marginalProfit: {
+        type: Number,
+        required: true
+    },
+    totalInvestment: {
+        type: Number,
+        required: true
+    },
+    myInvestment: {
+        type: Number,
+        required: true
+    },
+    proof: {
+        type: String,
+        required: true
+    },
+    submittedAt: {
+        type: Date,
+        default: Date.now
+    }
+});
 // const userSchema = new mongoose.Schema         unique: true // Ensure uniquenes
 module.exports = {
     User: mongoose.model("User", LoginSchema),
-    JobApplication: mongoose.model("JobApplication", JobApplicationSchema)
-
+    JobApplication: mongoose.model("JobApplication", JobApplicationSchema),
+    Idea: mongoose.model("Idea", IdeaSchema)
     
 };

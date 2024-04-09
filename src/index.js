@@ -3,7 +3,7 @@ const path = require("path");
 //const User = require("./config"); // Importing the User model
 const bcrypt = require('bcrypt');
 //const FormEntry = require('./formEntry');
-const { User,JobApplication } = require('./config');
+const { User,JobApplication,Idea } = require('./config');
 // JobApplication.create({
 //     name: 'John Doe',               // Name of the applicant
 //     place: 'City',                  // Place of residence
@@ -37,6 +37,9 @@ app.use((err, req, res, next) => {
 app.get("/home", (req, res) => {
     res.render("home");
 });
+app.get("/jp", (req, res) => {
+    res.render("jp");
+});
 
 app.get("/signup", (req, res) => {
     res.render("signup");
@@ -45,7 +48,10 @@ app.get("/signup", (req, res) => {
 app.get("/about", (req, res) => {
     res.render('about'); 
 });
-
+app.get("/jobpartners", (req, res) => {
+    res.render('jobpartners'); 
+}
+);
 
 app.get("/services", (req, res) => {
     res.render('services'); 
@@ -74,32 +80,46 @@ app.get('/job', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
-
-
-app.post("/submit-form", async (req, res) => {
+app.get("/viewproposals", async (req, res) => {
     try {
-        // Extract form data from the request body
-        const { name, place, mobile, jobDescription, expectedSalary, proofDescription } = req.body;
+        // Fetch all proposals from the Idea collection
+        const proposals = await Idea.find({});
 
-        // Create a new job application document
-        const newJobApplication = new JobApplication({
-            name,
-            place,
-            mobile,
-            jobDescription,
-            expectedSalary,
-            proofDescription
-        });
-
-        // Save the new job application to the database
-        await newJobApplication.save();
-
-        res.status(201).send("Form submitted successfully!");
+        // Render the viewproposals.ejs template with the proposals data
+        res.render("viewproposals", { proposals: proposals });
     } catch (error) {
-        console.error('Error submitting form:', error);
-        res.status(500).send("Internal Server Error");
+        console.error('Error fetching proposals:', error);
+        res.status(500).send('Internal Server Error');
     }
 });
+app.post('/submit-1', async (req, res) => {
+    try {
+        // Extract data from the request body
+        const { name, email, phone, idea, profit, investment, 'my-investment': myInvestment, proof } = req.body;
+
+        // Create a new Idea document
+        const newIdea = new Idea({
+            name,
+            email,
+            phoneNo: phone,
+            ideaDescription: idea,
+            marginalProfit: profit,
+            totalInvestment: investment,
+            myInvestment,
+            proof,
+            submittedAt: new Date()
+        });
+
+        // Save the new Idea document to the database
+        await newIdea.save();
+
+        res.status(200).json({ message: 'Idea submitted successfully' });
+    } catch (error) {
+        console.error('Error submitting idea:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 // Endpoint to fetch user data
 app.get('/users', async (req, res) => {
     try {
@@ -176,16 +196,23 @@ app.post('/dashboard', async (req, res) => {
     try {
         const username = req.body.username;
 
-        // Fetch the job applications for the provided username
+        // Fetch job applications for the provided username
         const userJobApplications = await JobApplication.find({ name: username });
 
-        // Render the dashboard template with the job application data
-        res.render('dashboard', { jobApplications: userJobApplications });
+        // Fetch investor proposals for the provided username
+        const userInvestorProposals = await Idea.find({ name: username });
+
+        // Render the dashboard template with job applications and investor proposals data
+        res.render('dashboard', {
+            jobApplications: userJobApplications,
+            proposals: userInvestorProposals
+        });
     } catch (error) {
-        console.error('Error fetching job applications:', error);
+        console.error('Error fetching data:', error);
         res.status(500).send('Internal Server Error');
     }
 });
+
 
 
 app.post("/login", async (req, res) => {
@@ -217,24 +244,32 @@ app.post("/login", async (req, res) => {
 
 
 
-// app.post("/submit-form", async (req, res) => {
-//     try {
-//         // Parse form data from the request body
-//         const formData = req.body;
+app.post("/submit-form", async (req, res) => {
+    try {
+        // Parse form data from the request body
+        const { name, place, mobile, jobDescription, expectedSalary, proofDescription } = req.body;
 
-//         // Create a new instance of the FormEntry model with the parsed form data
-//         const newFormEntry = new FormEntry(formData);
 
-//         // Save the new form entry to the database
-//         await newFormEntry.save();
+        // Create a new instance of the FormEntry model with the parsed form data
+        const newJobApplication = new JobApplication({
+            name,
+            place,
+            mobile,
+            jobDescription,
+            expectedSalary,
+            proofDescription
+        });
 
-//         // Respond with a success message
-//         res.status(201).send('Form data saved successfully!');
-//     } catch (error) {
-//         console.error('Error saving form data:', error);
-//         res.status(500).send("An error occurred while saving form data. Please try again later.");
-//     }
-// });
+        // Save the new form entry to the database
+        await newJobApplication.save();
+
+        // Respond with a success message
+        res.status(201).send('Form data saved successfully!');
+    } catch (error) {
+        console.error('Error saving form data:', error);
+        res.status(500).send("An error occurred while saving form data. Please try again later.");
+    }
+});
 
 
 const port = 3000;

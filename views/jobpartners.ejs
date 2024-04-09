@@ -1,0 +1,99 @@
+<!-- jobpartners.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Partners</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+        textarea {
+            height: 100px;
+        }
+        .submit-btn {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Job Partners Form</h1>
+        <form action="/submit-1" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" name="phone" placeholder="Enter your phone number" required>
+            </div>
+            <div class="form-group">
+                <label for="idea">Idea Description:</label>
+                <textarea id="idea" name="idea" placeholder="Describe your idea" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="profit">Marginal Profit:</label>
+                <input type="number" id="profit" name="profit" placeholder="Enter marginal profit" required>
+            </div>
+            <div class="form-group">
+                <label for="investment">Total Investment:</label>
+                <input type="number" id="investment" name="investment" placeholder="Enter total investment" required>
+            </div>
+            <div class="form-group">
+                <label for="my-investment">Your Investment:</label>
+                <input type="number" id="my-investment" name="my-investment" placeholder="Enter your investment" required>
+            </div>
+            <div class="form-group">
+                <label for="proof">Proof (Google Drive Link):</label>
+                <input type="text" id="proof" name="proof" placeholder="Enter Google Drive link" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    
+    </body>
+    </html>

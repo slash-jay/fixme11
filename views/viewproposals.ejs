@@ -1,0 +1,100 @@
+<!-- viewproposals.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Proposals</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .proposal-container {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>View Proposals</h1>
+
+        <% if (proposals.length > 0) { %>
+            <% proposals.reverse().forEach(proposal => { %>
+                <div class="proposal-container">
+                    <h2><%= proposal.name %></h2>
+                    <p>Email: <%= proposal.email %></p>
+                    <p>Phone: <%= proposal.phoneNo %></p>
+                    <p>Idea Description: <%= proposal.ideaDescription %></p>
+                    <p>Marginal Profit: <%= proposal.marginalProfit %></p>
+                    <p>Total Investment: <%= proposal.totalInvestment %></p>
+                    <p>My Investment: <%= proposal.myInvestment %></p>
+                    <p>Proof: <%= proposal.proof %></p>
+                    <p>Submitted At: <%= proposal.submittedAt %></p>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p>No proposals found.</p>
+        <% } %>
+
+        <a href="/home" class="button">Back to Home</a>
+    </div>
+
+</body>
+
+</html>

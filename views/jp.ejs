@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Proposals</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #B2B5E0, #C5ADC5);
+        }
+        .container {
+            position: relative; /* Ensure Particle.js container is positioned relative to this */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #particles-js {
+            position: absolute; /* Position Particle.js container absolutely */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Ensure Particle.js container is behind other content */
+        }
+        .option-container {
+            width: 45%;
+            padding: 20px;
+            margin: 10px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .option-container h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .option {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .option-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .option-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle.js container -->
+    <div id="particles-js"></div>
+
+    <div class="container">
+        <div class="option-container">
+            <h2>View Proposals</h2>
+            <div class="option">
+                <button class="option-button"><a href="/viewproposals">View Proposals</a></button>
+            </div>
+        </div>
+        <div class="option-container">
+            <h2>Create Proposals</h2>
+            <div class="option">
+                <button class="option-button"><a href="/jobpartners">Create Proposals</a></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Particle.js library -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Configure Particle.js
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 100
+                },
+                "color": {
+                    "value": "#000000"
+                },
+                "shape": {
+                    "type": "circle"
+                },
+                "size": {
+                    "value": 3
+                },
+                "opacity": {
+                    "value": 3
+                },
+                "move": {
+                    "speed": 5
+                },
+                "line_linked": {
+                    "color": "#9400D3",
+                    "opacity": 1
+                }
+            },
+            "interactivity": {
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

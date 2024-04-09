@@ -17,20 +17,16 @@
         }
 
         table {
-              /* background: linear-gradient(to right, #B2B5E0, #C5ADC5); */
-            width: 300vh;
+            width: 100%;
             border: 1px solid #ccc;
-           /* border-radius: 30p    x; */
             margin: 20px auto;
             max-width: 800px;
-            /* box-shadow: #676eda; */
         }
 
         th, td {
             padding: 10px;
             text-align: left;
             border-bottom: 1px solid #ddd;
-          
         }
 
         th {
@@ -38,7 +34,7 @@
         }
 
         tr:hover {
-              background: linear-gradient(to right, #a396e0, #C5ADC5);
+            background: linear-gradient(to right, #a396e0, #C5ADC5);
         }
     </style>
 </head>
@@ -64,6 +60,34 @@
                 <td><%= application.expectedSalary %></td>
                 <td><%= application.proofDescription %></td>
                 <td><%= application.submittedAt %></td>
+            </tr>
+        <% }); %>
+    </table>
+
+    <h2>Investor Proposals</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone No</th>
+            <th>Idea Description</th>
+            <th>Marginal Profit</th>
+            <th>Total Investment</th>
+            <th>My Investment</th>
+            <th>Proof</th>
+            <th>Submitted At</th>
+        </tr>
+        <% proposals.forEach((proposal) => { %>
+            <tr>
+                <td><%= proposal.name %></td>
+                <td><%= proposal.email %></td>
+                <td><%= proposal.phoneNo %></td>
+                <td><%= proposal.ideaDescription %></td>
+                <td><%= proposal.marginalProfit %></td>
+                <td><%= proposal.totalInvestment %></td>
+                <td><%= proposal.myInvestment %></td>
+                <td><%= proposal.proof %></td>
+                <td><%= proposal.submittedAt %></td>
             </tr>
         <% }); %>
     </table>
