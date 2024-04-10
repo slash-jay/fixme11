@@ -1,9 +1,10 @@
 const express = require("express");
 const path = require("path");
+const nodemailer = require('nodemailer');
 //const User = require("./config"); // Importing the User model
 const bcrypt = require('bcrypt');
 //const FormEntry = require('./formEntry');
-const { User,JobApplication,Idea } = require('./config');
+const { User,JobApplication,Idea,InnovationProposal} = require('./config');
 // JobApplication.create({
 //     name: 'John Doe',               // Name of the applicant
 //     place: 'City',                  // Place of residence
@@ -24,7 +25,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
 app.use(express.static("public"));
-
+const transporter = nodemailer.createTransport({
+    // Configuration for your email service provider (e.g., Gmail)
+    service: 'gmail',
+    auth: {
+        user: 'your-email@gmail.com',
+        pass: 'your-password'
+    }
+});
 app.get("/", (req, res) => {
     res.render("login");
 });
@@ -34,11 +42,36 @@ app.use((err, req, res, next) => {
     res.status(500).send('Internal Server Error');
 });
 
+app.post('/send-email', async (req, res) => {
+    try {
+        const { to, from } = req.body;
+
+        // Send email
+        await transporter.sendMail({
+            from: from, // Sender's email fetched from the popup prompt
+            to: to, // Recipient's email fetched from the proposal
+            subject: 'Proposal Accepted',
+            text: 'Your proposal has been accepted! Congratulations!'
+        });
+
+        res.sendStatus(200);
+    } catch (error) {
+        console.error('Error sending email:', error);
+        res.sendStatus(500);
+    }
+});
+
 app.get("/home", (req, res) => {
     res.render("home");
 });
+app.get("/inter", (req, res) => {
+    res.render("inter");
+});
 app.get("/jp", (req, res) => {
     res.render("jp");
+});
+app.get("/innovation", (req, res) => {
+    res.render("innovation");
 });
 
 app.get("/signup", (req, res) => {
@@ -185,10 +218,66 @@ app.get("/user/:name/proposals", async (req, res) => {
     }
 });
 
+
+
 // Route to render the user's dashboard
 // Render the form to input username when accessing the dashboard
 app.get('/dashboard', (req, res) => {
     res.render('dashboard_username_form');
+});
+app.get('/viewproposals', async (req, res) => {
+    try {
+        const proposals = await InnovationProposal.find();
+        res.json(proposals);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+});
+
+app.post('/submit_proposal', async (req, res) => {
+    try {
+        const {
+            idea_name,
+            email,
+            problem_statement,
+            solution_description,
+            target_market,
+            competitive_analysis,
+            revenue_model,
+            execution_plan,
+            team,
+            financial_projections,
+            risks_and_mitigations,
+            exit_strategy,
+            additional_materials,
+        } = req.body;
+
+        // Create new InnovationProposal document
+        const proposal = new InnovationProposal({
+            idea_name,
+            email,
+            problem_statement,
+            solution_description,
+            target_market,
+            competitive_analysis,
+            revenue_model,
+            execution_plan,
+            team,
+            financial_projections,
+            risks_and_mitigations,
+            exit_strategy,
+            additional_materials,
+        });
+// console.log(proposal);
+        // Save the proposal to MongoDB
+        await proposal.save();
+
+        res.status(201).json({ message: 'Proposal submitted successfully' });
+    } catch (error) {
+        console.error('Error submitting proposal:', error);
+        res.status(500).json({ message: 'Error submitting proposal' });
+    }
 });
 
 // Handle form submission to fetch job applications based on the provided username
@@ -241,7 +330,34 @@ app.post("/login", async (req, res) => {
         res.status(500).send("Error occurred while processing login");
     }
 });
+// Function to generate a random color
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 
+// Route to render the viewinnovation page with innovation proposals
+app.get('/viewinnovation', async (req, res) => {
+    try {
+        // Fetch all proposals from the database
+        const proposals = await InnovationProposal.find({});
+        
+        // Generate a random color for each proposal
+        proposals.forEach(proposal => {
+            proposal.randomColor = getRandomColor();
+        });
+
+        // Render the viewinnovation.ejs template with the proposals data
+        res.render("viewinnovation", { proposals: proposals });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+});
 
 
 app.post("/submit-form", async (req, res) => {

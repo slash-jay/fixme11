@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovation Proposal Form</title>
+    <style>
+       
+       body {
+            margin: 0;
+            background: linear-gradient(to right, #B2B5E0, #C5ADC5);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            overflow: auto;
+        }
+        .h11{
+            text-align: center;
+            color: #9400D3;
+
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8); /* Adjust opacity as needed */
+            padding: 20px;
+            margin-left: 409px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .form-container label {
+            font-weight: bold;
+        }
+
+        .form-container input[type="text"],
+        .form-container textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="h11"><h1><b>IDEA PROPOSAL</b></h1></div>
+    
+    <div class="form-container">
+        <form action="submit_proposal" method="post">
+            <label for="idea_name">Idea Name:</label><br>
+            <input type="text" id="idea_name" name="idea_name" required><br>
+
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" name="email" required><br>
+            <label for="problem_statement">Problem_statement:</label>
+            <textarea id="problem_statement" name="problem_statement" rows="4" required></textarea><br>
+
+            <label for="solution_description">Solution Description:</label><br>
+            <textarea id="solution_description" name="solution_description" rows="4" required></textarea><br>
+
+            <label for="target_market">Target Market:</label><br>
+            <input type="text" id="target_market" name="target_market" required><br>
+
+            <label for="competitive_analysis">Competitive Analysis:</label><br>
+            <textarea id="competitive_analysis" name="competitive_analysis" rows="4" required></textarea><br>
+
+            <label for="revenue_model">Revenue Model:</label><br>
+            <textarea id="revenue_model" name="revenue_model" rows="4" required></textarea><br>
+
+            <label for="execution_plan">Execution Plan:</label><br>
+            <textarea id="execution_plan" name="execution_plan" rows="4" required></textarea><br>
+
+            <label for="team">Team:</label><br>
+            <textarea id="team" name="team" rows="4" required></textarea><br>
+
+            <label for="financial_projections">Financial Projections:</label><br>
+            <textarea id="financial_projections" name="financial_projections" rows="4" required></textarea><br>
+
+            <label for="risks_and_mitigations">Risks and Mitigations:</label><br>
+            <textarea id="risks_and_mitigations" name="risks_and_mitigations" rows="4" required></textarea><br>
+
+            <label for="exit_strategy">Exit Strategy:</label><br>
+            <textarea id="exit_strategy" name="exit_strategy" rows="4" required></textarea><br>
+
+            <label for="additional_materials">Additional Materials:</label><br>
+            <textarea id="additional_materials" name="additional_materials" rows="4"></textarea><br>
+
+            <input type="submit" value="Submit Proposal">
+        </form>
+    </div>
+</body>
+
+</html>

@@ -49,6 +49,64 @@ const JobApplicationSchema = new mongoose.Schema({
         default: Date.now
     }
 });
+const InnovationProposalSchema = new mongoose.Schema({
+    idea_name: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    problem_statement: {
+        type: String,
+        required: true
+    },
+    solution_description: {
+        type: String,
+        required: true
+    },
+    target_market: {
+        type: String,
+        required: true
+    },
+    competitive_analysis: {
+        type: String,
+        required: true
+    },
+    revenue_model: {
+        type: String,
+        required: true
+    },
+    execution_plan: {
+        type: String,
+        required: true
+    },
+    team: {
+        type: String,
+        required: true
+    },
+    financial_projections: {
+        type: String,
+        required: true
+    },
+    risks_and_mitigations: {
+        type: String,
+        required: true
+    },
+    exit_strategy: {
+        type: String,
+        required: true
+    },
+    additional_materials: {
+        type: String
+    },
+    submittedAt: {
+        type: Date,
+        default: Date.now
+    }
+});
+
 const IdeaSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -91,6 +149,7 @@ const IdeaSchema = new mongoose.Schema({
 module.exports = {
     User: mongoose.model("User", LoginSchema),
     JobApplication: mongoose.model("JobApplication", JobApplicationSchema),
-    Idea: mongoose.model("Idea", IdeaSchema)
+    Idea: mongoose.model("Idea", IdeaSchema),
+    InnovationProposal: mongoose.model("InnovationProposal", InnovationProposalSchema)
     
 };

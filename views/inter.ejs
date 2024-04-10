@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal Management</title>
+    <style>
+        
+        body {
+            margin: 0;
+            background: linear-gradient(to right, #B2B5E0, #C5ADC5);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            overflow: auto;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .cube {
+            width: 200px;
+            height: 200px;
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .view-proposal {
+            
+            background-color: lightgreen; /* Change color as needed */
+        }
+
+        .create-proposal {
+            background: linear-gradient(to bottom, blue, white); /* Gradient from blue to white */
+        }
+
+        .cube a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cube view-proposal">
+            <a href="/viewinnovation">View Proposal</a>
+        </div>
+        <div class="cube create-proposal">
+            <a href="/innovation">Create Proposal</a>
+        </div>
+    </div>
+</body>
+</html

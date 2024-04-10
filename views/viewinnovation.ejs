@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Innovation Proposals</title>
+    <!-- <link rel="stylesheet" href="styles.css"> Include your CSS file here -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .cube {
+            width: 300px;
+            height: auto; /* Adjust height based on content */
+            padding: 20px;
+            margin: 20px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Adjust shadow as needed */
+            transition: all 0.3s ease;
+        }
+
+        .cube:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Adjust shadow on hover */
+        }
+
+        .cube p {
+            margin: 0;
+            padding: 5px 0;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .accept-button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .accept-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <% proposals.forEach(proposal => { %>
+            <% const gradientColor = `linear-gradient(white, ${proposal.randomColor})`; %>
+            <div class="cube" style="background-image: <%= gradientColor %>;">
+                <p>Idea Name: <%= proposal.idea_name %></p>
+                <p>Problem Statement: <%= proposal.problem_statement %></p>
+                <p>Solution Description: <%= proposal.solution_description %></p>
+                <p>Target Market: <%= proposal.target_market %></p>
+                <p>Competitive Analysis: <%= proposal.competitive_analysis %></p>
+                <p>Revenue Model: <%= proposal.revenue_model %></p>
+                <p>Execution Plan: <%= proposal.execution_plan %></p>
+                <p>Team: <%= proposal.team %></p>
+                <p>Financial Projections: <%= proposal.financial_projections %></p>
+                <p>Risks and Mitigations: <%= proposal.risks_and_mitigations %></p>
+                <p>Exit Strategy: <%= proposal.exit_strategy %></p>
+                <% if (proposal.additional_materials) { %>
+                    <p>Additional Materials: <%= proposal.additional_materials %></p>
+                <% } %>
+                <p>Submitted At: <%= proposal.submittedAt %></p>
+                <button class="accept-button" onclick="acceptProposal('<%= proposal.email %>')">Accept Proposal</button>
+                <!-- Add other fields from the proposal as needed -->
+            </div>
+        <% }); %>
+    </div>
+
+    <script>
+        function acceptProposal(email) {
+            const senderEmail = prompt('Please enter your email:');
+            if (senderEmail) {
+                // AJAX request to send email
+                fetch('/send-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ to: email, from: senderEmail })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert(`Message sent to ${email}: Proposal Accepted!`);
+                    } else {
+                        throw new Error('Failed to send email');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error sending email:', error);
+                    alert('Failed to send email');
+                });
+            }
+        }
+    </script>
+</body>
+</html>
