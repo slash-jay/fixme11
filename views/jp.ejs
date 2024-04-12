@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,37 +12,60 @@
             font-family: Arial, sans-serif;
             background: linear-gradient(to right, #B2B5E0, #C5ADC5);
         }
+        a{
+            
+            text-decoration: none;
+        }
+
         .container {
-            position: relative; /* Ensure Particle.js container is positioned relative to this */
+            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
+
         #particles-js {
-            position: absolute; /* Position Particle.js container absolutely */
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Ensure Particle.js container is behind other content */
+            z-index: -1;
         }
+
         .option-container {
             width: 45%;
             padding: 20px;
             margin: 10px;
-            background-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease; /* Fade in animation */
         }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .option-container h2 {
             margin-bottom: 20px;
             text-align: center;
+            color: #333;
         }
+
         .option {
             margin-bottom: 10px;
             text-align: center;
         }
+
         .option-button {
             padding: 10px 20px;
             background-color: #4CAF50;
@@ -50,12 +74,15 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
+            transition: background-color 0.3s ease; /* Smooth transition */
         }
+
         .option-button:hover {
             background-color: #45a049;
         }
     </style>
 </head>
+
 <body>
     <!-- Particle.js container -->
     <div id="particles-js"></div>
@@ -115,4 +142,5 @@
         });
     </script>
 </body>
+
 </html>

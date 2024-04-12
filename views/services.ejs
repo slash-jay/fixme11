@@ -1,69 +1,105 @@
-<!-- services.ejs -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
-        
         body {
-            background: linear-gradient(to right, #B2B5E0, #C5ADC5);
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            color: #000; /* Set default text color */
+            background: linear-gradient(to right, #8EC5FC, #E0C3FC); /* Gradient background */
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         /* Container for sections */
         .section-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
             padding: 20px;
+            gap: 20px;
+            max-width: 1200px;
         }
 
         /* Individual sections */
         .section {
-            background-color: rgba(255, 255, 255, 0.8); /* Light background color for sections */
-            margin-bottom: 20px;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+            background-color: #fff; /* White background color for sections */
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+            flex: 1 1 300px;
+            max-width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        /* Hover effect */
+        .section:hover {
+            transform: translateY(-5px);
         }
 
         /* Heading styles */
         .section h2 {
-            color: #9400D3; /* Dark violet color for headings */
+            color: #4B5563; /* Dark gray color for headings */
         }
 
-     
+        /* Link styles */
+        .section a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Paragraph styles */
         .section p {
-            color: #000; /* Default text color */
+            color: #6B7280; /* Gray color for paragraphs */
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="section-container">
+    <!-- Background design -->
+    <div class="background"></div>
+
+    <!-- Service sections -->
+    <div class="section-container animate__animated animate__fadeIn">
         <!-- Section 1: Job Proposal -->
         <div class="section">
-            <a href="/proposals"><h2>Job Proposal</h2></a>
+            <a href="/proposals">
+                <h2>Job Proposal</h2>
+            </a>
             <p>We help you create compelling job proposals to attract top talent.</p>
         </div>
 
         <!-- Section 2: Part-time Hiring -->
         <div class="section">
-             <a href="/job"> <h2 >Part-time Hiring</h2> </a>
+            <a href="/job">
+                <h2>Part-time Hiring</h2>
+            </a>
             <p>Find part-time employees to fill your workforce needs.</p>
         </div>
 
         <!-- Section 3: Job Partner Finders -->
         <div class="section">
-           <a href="/jp"><h2>Job Partner Finders</h2></a>
+            <a href="/jp">
+                <h2>Job Partner Finders</h2>
+            </a>
             <p>Connect with potential job partners to collaborate on projects.</p>
         </div>
 
         <!-- Section 4: Proposals for Investors -->
         <div class="section">
-           <a href="/inter"> <h2>Proposals for Investors</h2> </a>
+            <a href="/inter">
+                <h2>Proposals for Investors</h2>
+            </a>
             <p>Craft persuasive proposals to attract investment for your ventures.</p>
         </div>
     </div>

@@ -4,52 +4,100 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About FixMe</title>
-<style>
+  <style>
     body {
-        background: linear-gradient(to right, #B2B5E0, #C5ADC5);
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
+      background: linear-gradient(to right, #B2B5E0, #C5ADC5);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden; /* Hide horizontal overflow */
+    }
 
-.container {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 0 20px;
-}
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
 
-.section {
-  margin-bottom: 30px;
-}
+    .section {
+      margin-bottom: 30px;
+      animation: fadeInUp 1s ease; /* Animation */
+    }
 
-h2 {
-  color: #333;
-}
+    h2 {
+      color: #333;
+    }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
 
-ul li {
-  margin-bottom: 10px;
-}
+    ul li {
+      margin-bottom: 10px;
+    }
 
-a {
-  color: #007bff;
-  text-decoration: none;
-}
+    a {
+      color: #007bff;
+      text-decoration: none;
+      transition: color 0.3s ease; /* Smooth color transition */
+    }
 
-a:hover {
-  text-decoration: underline;
-}
+    a:hover {
+      color: #004499; /* Darker color on hover */
+    }
 
-</style>
+    /* Keyframe animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Additional styles */
+    .graphic {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .graphic img {
+      max-width: 100%;
+    }
+
+    .animation {
+      animation: pulse 2s infinite;
+    }
+  .he {
+   text-align: center;
+   font-size: 2em;
+   animation: fadeInUp 1s ease; /* Add animation */
+  }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <section class="section">
-      <h2>Welcome to FixMe</h2>
+     <div class="he"> <h1> <b>Welcome to FixMe</b></h1> </div>
+      <div class="graphic">
+        <img src="/favicon final.png" alt="Graphic" class="animation">
+      </div>
       <p>At FixMe, we're dedicated to connecting businesses, investors, and collaborators seamlessly. Whether you're an entrepreneur seeking funding, an investor scouting promising ventures, or a professional looking for collaboration opportunities, FixMe is your go-to platform.</p>
     </section>
 
@@ -78,8 +126,11 @@ a:hover {
 
     <section class="section">
       <h2>Get in Touch</h2>
-      <p>We value your feedback and are here to assist you every step of the way. If you have any questions, suggestions, or inquiries, please don't hesitate to reach out to us at <a href="mailto:konajayashankar@gmail.com">query@fixme.com</a>.</p>
+      <p>We value your feedback and are here to assist you every step of the way. If you have any questions, suggestions, or inquiries, please don't hesitate to reach out to us at <a href="mailto:query@fixme.com">query@fixme.com</a>.</p>
     </section>
+
+    <!-- Additional graphics and animations -->
+   
   </div>
 </body>
 </html>

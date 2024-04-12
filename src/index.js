@@ -5,19 +5,7 @@ const nodemailer = require('nodemailer');
 const bcrypt = require('bcrypt');
 //const FormEntry = require('./formEntry');
 const { User,JobApplication,Idea,InnovationProposal} = require('./config');
-// JobApplication.create({
-//     name: 'John Doe',               // Name of the applicant
-//     place: 'City',                  // Place of residence
-//     mobile: '1234567890',           // Mobile number of the applicant
-//     jobDescription: 'Developer',    // Job description or position applied for
-//     expectedSalary: '50000',        // Expected salary
-//     proofDescription: 'Resume',     // Description of the proof provided (e.g., resume)
-//     // Additional fields...
-// })
-// .then(jobApplication => {
-//     console.log('Job application created:', jobApplication);
-// })
-// .catch(error => {
+
 //     console.error('Error creating job application:', error);
 // });
 const app = express();

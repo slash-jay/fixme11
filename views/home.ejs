@@ -6,145 +6,160 @@
     <link rel="icon" href="/F.png" type="image/x-icon">
     <title>HOME</title>
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-        }
+       body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
 
-        @keyframes slideIn {
-            from {
-                transform: translateY(-80%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+a {
+    text-decoration: none; /* Removes underline from all anchor tags */
+}
 
-        body {
-            margin: 0;
-            background: linear-gradient(to right, #B2B5E0, #C5ADC5);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            height: 100vh;
-            overflow: auto;
-        }
+@keyframes slideIn {
+    from {
+        transform: translateY(-80%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 
-        nav {
-            background-color: whitesmoke;
-            padding: 10px 0;
-            animation: slideIn 0.5s ease;
-        }
+body {
+    margin: 0;
+    background: linear-gradient(to right, #B2B5E0, #C5ADC5);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    overflow: auto;
+}
 
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
+nav {
+    background: linear-gradient(to right, #B2B5E0, #C5ADC5); /* Gradient background */
+    padding: 10px 0;
+    animation: slideIn 0.5s ease;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
-        li {
-            display: inline;
-        }
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
 
-        li a {
-            display: inline-block;
-            color: rgb(9, 9, 9);
-            padding: 10px 45px;
-            text-decoration: none;
-            font-size: 20px;
-            transition: all 0.3s ease;
-        }
+li {
+    display: inline;
+}
 
-        li a:hover {
-            background-color: #bbbab5;
-            color: rgb(15, 32, 125);
-            border-radius: 5px;
-        }
+li a {
+    display: inline-block;
+    color: rgb(255, 255, 255);
+    padding: 10px 25px; /* Adjusted padding */
+    text-decoration: none;
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
 
-        .container {
-   /* Adjust the path based on the actual location of your image */
-    background-size: cover; /* Ensure the background image covers the entire container */
+li a:hover {
+    background-color: rgba(255, 255, 255, 0.9); /* Lighten the background */
+    color: rgb(15, 32, 125);
+    border-radius: 5px;
+}
+
+.container,.container2,.container3 {
+    background-size: cover;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 30px;
     margin-left: 42px;
-    margin-right: 42px; /* Adjust this margin as needed */
-    width: 100%; /* Ensure the container spans the entire width */
-    height: 400px; /* Set a fixed height for the container */
+    margin-right: 42px;
+    width: 100%;
+    height: 400px;
 }
-#navtag{
 
+.innerbody2 {
+    /* margin-left: 40px; */
     background: linear-gradient(to right, #B2B5E0, #C5ADC5);
-       
+    width: 370px;
+    box-shadow: 10px 10px 10px 10px lightblue;
+    height: 360px;
+    color: rgb(15, 32, 125);
 }
-        .container2 {
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 30px;
-            margin-left: 42px;
-            margin-right: 42px; /* Adjust this margin as needed */
-        }
-        .container3 {
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 30px;
-            margin-left: 42px;
-            margin-right: 42px; /* Adjust this margin as needed */
-        }
-        .innerbody2{
-            background: linear-gradient(to right, #B2B5E0, #C5ADC5);
-            width: 1200px;
-            box-shadow: 10px 10px 10px 10px lightblue;
-            height: 360px;
-            color: rgb(15, 32, 125);
-        }
 
-        .innerbody {
-            background: linear-gradient(to right, #B2B5E0, #C5ADC5);
-            width: 1200px;
-            box-shadow: 10px 10px 10px 10px lightblue;
-            height: 360px;
-            color: rgb(15, 32, 125);
-        }
-        .innerbody3 {
-            background: linear-gradient(to right, #B2B5E0, #C5ADC5);
-            width: 1200px;
-            box-shadow: 10px 10px 10px 10px lightblue;
-            height: 360px;
-            color: rgb(15, 32, 125);
-        }
+.innerbody {
+    
+    background: linear-gradient(to right, #B2B5E0, #C5ADC5);
+    width: 1200px;
+    box-shadow: 10px 10px 10px 10px lightblue;
+    height: 360px;
+    color: rgb(15, 32, 125);
+}
 
-        #tex {
-            padding: 95px;
-            text-align: center;
-        }
+.innerbody3 {
+    /* margin-left: 40px; */
+    background: linear-gradient(to right, #B2B5E0, #C5ADC5);
+    width: 370px;
+    box-shadow: 10px 10px 10px 10px lightblue;
+    height: 360px;
+    color: rgb(15, 32, 125);
+}
 
-        .content {
-            padding: 20px;
-            text-align: center;
-        }
-        .content2{
-            padding: 20px;
-            text-align: center;
-        }
-        .content3{
-            padding: 20px;
-            text-align: center;
-        }
+#tex {
+    padding: 95px;
+    text-align: center;
+}
 
-        .tex1 {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-grow: 1;
+.content {
+    padding: 20px;
+    text-align: center;
+}
+
+.content2 {
+    padding: 20px;
+    text-align: center;
+    margin-left: auto; /* Align content 2 to the right */
+}
+
+.content3 {
+    padding: 20px;
+    text-align: center;
+    margin-left: auto; /* Align content 3 to the right */
+}
+
+.tex1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+.pulsate-div {
+        width: 50px;
+        height: 50px;
+        margin-left: 490px;
+        /* background-color: #3498db; Set background color */
+        /* border-radius: 50%; Make it a circle */
+        animation: pulse 2s infinite; /* Apply the pulse animation */
+    }
+
+    /* Keyframes for the pulse animation */
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
         }
+        50% {
+            transform: scale(1.1 )  ;
+        }
+        /* 75% {
+            transform: scale(1);
+        } */
+    }
 
     </style>
 </head>
@@ -158,12 +173,14 @@
             <li><a href="/dashboard">Dashboard</a></li>
         </ul>
     </nav>
-   
-   
+   <br><br><br><br>
+   <div class="pulsate-div">
+    <img src="/favicon final.png" alt="Graphic" class="animation">
+   </div>
     <div class="container">
         <div class="innerbody">
             <div id="tex">
-                <h1><b>NEED A JOB?</b></h1>
+                <h1><a href="/job"><b>NEED A JOB?</b></a></h1>
             </div>
         </div>
         <div class="content">
@@ -176,10 +193,13 @@
              </div>
              </div>
     </div>
+    <br>
+    <br>
+    <br>
     <div class="container2">
         <div class="innerbody2">
             <div id="tex">
-                <h1><b>FINDING A INVESTOR?</b></h1>
+           <h1><a href="/inter"><b>FINDING A INVESTOR?</b></a></h1>
             </div>
         </div>
         <div class="content2">
@@ -199,10 +219,11 @@
             </div>
              </div>
     </div>
+    <br><br><br>
     <div class="container3">
         <div class="innerbody3">
             <div id="tex">
-                <h1><b>FINDING A BUSINESS PARTNER?</b></h1>
+                <h1> <a href="/jp"><b>FINDING A BUSINESS PARTNER?</b></a></h1>
             </div>
         </div>
         <div class="content3">
