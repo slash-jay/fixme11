@@ -1,12 +1,17 @@
 const mongoose = require('mongoose');
 
-mongoose.connect("mongodb://127.0.0.1:27017/login-tut")
-    .then(() => {
-        console.log("Database Connected Successfully");
-    })
-    .catch(error => {
-        console.error("Error connecting to database:", error);
-    });
+mongoose.connect("mongodb://127.0.0.1:27017/login-tut", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    socketTimeoutMS: 30000 // Increase timeout to 30 seconds
+})
+.then(() => {
+    console.log("Database Connected Successfully");
+})
+.catch(error => {
+    console.error("Error connecting to database:", error);
+});
+
 
 // Define the schema for user login
 const LoginSchema = new mongoose.Schema({
