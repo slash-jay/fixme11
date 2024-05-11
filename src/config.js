@@ -12,6 +12,7 @@ mongoose.connect(clusterUrl, { useNewUrlParser: true, useUnifiedTopology: true }
     });
 
 
+
 // Define the schema for user login
 const LoginSchema = new mongoose.Schema({
     name: {
