@@ -9,11 +9,13 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #ffffff, #C5ADC5);
+            background: linear-gradient(to right, #dfc1d5, #ddf8fe);
         }
 
         h1, h2 {
             text-align: center;
+            color: #333;
+            margin-top: 20px;
         }
 
         table {
@@ -21,6 +23,7 @@
             border: 1px solid #ccc;
             margin: 20px auto;
             max-width: 800px;
+            border-collapse: collapse;
         }
 
         th, td {
@@ -31,16 +34,33 @@
 
         th {
             background-color: #fafafa;
+            color: #333;
         }
 
         tr:hover {
             background: linear-gradient(to right, #a396e0, #C5ADC5);
+            color: #fff;
+        }
+
+        .animation {
+            animation: fade-in 1s ease-in-out;
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
     <h1>User Dashboard</h1>
-    <h2>Job Applications</h2>
+    <h2 class="animation">Job Applications</h2>
     <table>
         <tr>
             <th>Name</th>
@@ -52,7 +72,7 @@
             <th>Submitted At</th>
         </tr>
         <% jobApplications.forEach((application) => { %>
-            <tr>
+            <tr class="animation">
                 <td><%= application.name %></td>
                 <td><%= application.place %></td>
                 <td><%= application.mobile %></td>
@@ -64,7 +84,7 @@
         <% }); %>
     </table>
 
-    <h2>Investor Proposals</h2>
+    <h2 class="animation">Investor Proposals</h2>
     <table>
         <tr>
             <th>Name</th>
@@ -78,7 +98,7 @@
             <th>Submitted At</th>
         </tr>
         <% proposals.forEach((proposal) => { %>
-            <tr>
+            <tr class="animation">
                 <td><%= proposal.name %></td>
                 <td><%= proposal.email %></td>
                 <td><%= proposal.phoneNo %></td>
@@ -91,5 +111,9 @@
             </tr>
         <% }); %>
     </table>
+
+    <script>
+        // Add your JavaScript code here for interactive features
+    </script>
 </body>
 </html>

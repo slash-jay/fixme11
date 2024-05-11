@@ -1,12 +1,16 @@
 const mongoose = require('mongoose');
 
-mongoose.connect("mongodb://127.0.0.1:27017/login-tut")
+// Replace <password> with your actual password
+const clusterUrl = 'mongodb+srv://konajayashankar:RJcbDdeiXx3UvTZk@cluster0.jtwac24.mongodb.net/login-tut';
+
+mongoose.connect(clusterUrl, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("Database Connected Successfully");
     })
     .catch(error => {
         console.error("Error connecting to database:", error);
     });
+
 
 // Define the schema for user login
 const LoginSchema = new mongoose.Schema({
